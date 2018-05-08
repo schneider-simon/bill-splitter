@@ -1,6 +1,5 @@
 import {Item} from "../../src/models/Item"
 import {Bill} from "../../src/models/Bill"
-import {Share} from "../../src/models/Share"
 import {Participant} from "../../src/models/Participant"
 
 export const participant1: Participant = {
@@ -56,7 +55,7 @@ export const item3: Item = {
 
 export const bill1: Bill = {
   title: "Dummy bill",
-  date: Date.parse("01/01/2018"),
+  date: new Date(2018, 1, 1),
   items: [item1, item2, item3],
   participants: [participant1, participant2],
   payments: [
