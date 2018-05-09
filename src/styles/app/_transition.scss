@@ -1,0 +1,58 @@
+.fade-forward-enter {
+  transform: translate3d(100%, 0, 0);
+  z-index: 1101;
+}
+
+.fade-forward-enter.fade-forward-enter-active {
+  transform: translate3d(0, 0, 0);
+  transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+}
+
+.fade-forward-exit {
+  transform: translate3d(0, 0, 0);
+}
+
+.fade-forward-exit.fade-forward-exit-active {
+  transform: translate3d(-50px, 0, 0);
+  transition: ease-in-out transform 300ms 0ms;
+}
+
+.fade-back-enter {
+  transform: translate3d(100%, 0, 0);
+  z-index: 1101;
+}
+
+.fade-back--enter.fade-back--enter-active {
+  transform: translate3d(0, 0, 0);
+  transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+}
+
+.fade-back--exit {
+  transform: translate3d(0, 0, 0);
+}
+
+.fade-back--exit.fade-back--exit-active {
+  transform: translate3d(-50px, 0, 0);
+  transition: ease-in-out transform 300ms 0ms;
+}
+
+
+.app {
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+body, .page {
+  background: #eeeeee;
+}
+
+body {
+  overflow-x: hidden;
+}

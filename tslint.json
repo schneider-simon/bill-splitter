@@ -22,6 +22,9 @@
     "no-unused-expression": false,
     "no-unused-variable": false,
     "no-unused-parameters": false,
-    "no-unused-locals": false
+    "no-unused-locals": false,
+    "comment-format": false,
+    "jsx-no-lambda": false,
+    "no-var-requires": false
   }
 }

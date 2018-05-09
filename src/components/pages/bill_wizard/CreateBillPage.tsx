@@ -1,14 +1,19 @@
 import * as React from 'react';
+import {Page} from '../page/Page';
+import {Dispatch} from "redux";
+import {connect} from "react-redux";
+import {changePage} from "../../../state/actions/routing_actions";
+import {RouterAction} from "react-router-redux";
 
 export interface CreateBillPageProps {
-
+  changePage: (location: string) => RouterAction
 }
 
 export interface CreateBillPageState {
 
 }
 
-export class CreateBillPage extends React.Component<CreateBillPageProps, CreateBillPageState> {
+class CreateBillPageClass extends React.Component<CreateBillPageProps, CreateBillPageState> {
   constructor(props: CreateBillPageProps) {
     super(props)
 
@@ -17,9 +22,20 @@ export class CreateBillPage extends React.Component<CreateBillPageProps, CreateB
 
   public render() {
     return (
-        <div className="page page--create-bill">
+        <Page pageName="create-bill">
           Create Bill Page
-        </div>
+          <button onClick={() => this.props.changePage('/')}>Go to start</button>
+        </Page>
     );
   }
+
 }
+
+export const CreateBillPage = connect(
+    null,
+    (dispatch: Dispatch) => {
+      return {
+        changePage: (location: string) => dispatch(changePage(location))
+      }
+    }
+)(CreateBillPageClass)
