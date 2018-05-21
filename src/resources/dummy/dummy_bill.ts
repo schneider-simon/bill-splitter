@@ -1,6 +1,6 @@
-import {Item} from "../../src/models/Item"
-import {Bill} from "../../src/models/Bill"
-import {Participant} from "../../src/models/Participant"
+import {Item} from "../../models/Item"
+import {Bill} from "../../models/Bill"
+import {Participant} from "../../models/Participant"
 
 export const participant1: Participant = {
   name: "Simon",

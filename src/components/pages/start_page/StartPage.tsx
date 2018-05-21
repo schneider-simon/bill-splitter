@@ -1,17 +1,11 @@
 import * as React from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
 import {Page} from "../page/Page";
 import {RouterAction} from "react-router-redux";
 import {connect} from "react-redux";
-import {Dispatch} from "redux";
+import {compose, Dispatch} from "redux";
 import {changePage} from "../../../state/actions/routing_actions";
-import AppBar from "material-ui/AppBar";
-import Card, {CardActions, CardText} from "material-ui/Card";
-import List, {ListItem} from "material-ui/List";
-import {ActionSupervisorAccount} from "material-ui/svg-icons";
-import {Subheader} from "material-ui";
-import FloatingActionButton from "material-ui/FloatingActionButton";
-import ContentAdd from "material-ui/svg-icons/content/add";
+import {Card} from "../../partials/card/Card";
+import {AppBar} from "../../partials/app_bar/AppBar";
 
 export interface StartPageProps {
   changePage: (location: string) => RouterAction
@@ -33,27 +27,23 @@ class StartPageClass extends React.Component<StartPageProps, StartPageState> {
   public render() {
     return (
         <Page pageName={"start"}>
-          <AppBar
-              title="Bill splitter"
-          />
+          <AppBar/>
           <Card>
-            <CardActions>
-              <RaisedButton onClick={this.goToCreateBill} label="Add Bill" primary={true}/>
-            </CardActions>
+            <div onClick={this.goToCreateBill} className="btn btn-primary">
+              Add Bill
+            </div>
           </Card>
-          <FloatingActionButton className="fab" onClick={this.goToCreateBill}>
-            <ContentAdd/>
-          </FloatingActionButton>
-          <Subheader>Recent bills</Subheader>
           <Card>
-            <CardText>
-              <List>
-                <ListItem primaryText="Bill 1" leftIcon={<ActionSupervisorAccount/>}/>
-                <ListItem primaryText="Bill 2" leftIcon={<ActionSupervisorAccount/>}/>
-                <ListItem primaryText="Bill 3" leftIcon={<ActionSupervisorAccount/>}/>
-                <ListItem primaryText="Bill 4" leftIcon={<ActionSupervisorAccount/>}/>
-              </List>
-            </CardText>
+            <div className="card-body">
+              <div className="card-title">
+                Recent bills
+              </div>
+              <ul>
+                <li>Bill 1</li>
+                <li>Bill 2</li>
+                <li>Bill 3</li>
+              </ul>
+            </div>
           </Card>
         </Page>
     );
@@ -64,11 +54,13 @@ class StartPageClass extends React.Component<StartPageProps, StartPageState> {
   }
 }
 
-export const StartPage = connect(
-    null,
-    (dispatch: Dispatch) => {
-      return {
-        changePage: (location: string) => dispatch(changePage(location))
-      }
-    }
+export const StartPage = compose(
+    connect(
+        null,
+        (dispatch: Dispatch) => {
+          return {
+            changePage: (location: string) => dispatch(changePage(location))
+          }
+        }
+    )
 )(StartPageClass)

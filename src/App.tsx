@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './styles/app.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Route, Switch, RouteComponentProps, withRouter} from "react-router";
 import {constants} from "./constants/constants";
 import {CreateBillPage} from "./components/pages/bill_wizard/CreateBillPage";
@@ -17,20 +16,18 @@ class AppClass extends React.Component<AppProps> {
 
     return (
         <div className="app">
-          <MuiThemeProvider>
-            <TransitionGroup>
-              <CSSTransition
-                  key={currentKey}
-                  classNames="fade-forward"
-                  timeout={timeout}
-              >
-                <Switch location={this.props.location}>
-                  <Route exact={true} path='/' component={StartPage}/>
-                  <Route path={`/${constants.PATHS.CREATE_BILL}`} component={CreateBillPage}/>
-                </Switch>
-              </CSSTransition>
-            </TransitionGroup>
-          </MuiThemeProvider>
+          <TransitionGroup>
+            <CSSTransition
+                key={currentKey}
+                classNames="fade-forward"
+                timeout={timeout}
+            >
+              <Switch location={this.props.location}>
+                <Route exact={true} path='/' component={StartPage}/>
+                <Route path={`/${constants.PATHS.CREATE_BILL}`} component={CreateBillPage}/>
+              </Switch>
+            </CSSTransition>
+          </TransitionGroup>
         </div>
     );
   }
